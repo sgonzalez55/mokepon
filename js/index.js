@@ -1,1 +1,1 @@
-console.log('OK!')
+let btnSelect = document.getElementById('select')
