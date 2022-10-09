@@ -1,3 +1,6 @@
 *{
     background-color: rgb(148, 199, 182);
 }
+button{
+    border-radius: 12%;
+}
