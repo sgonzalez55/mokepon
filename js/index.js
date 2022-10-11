@@ -11,6 +11,7 @@ function poderes() {
     btnPoderes=addEventListener('click', seleccionarPoder)
 }
 
+
 //funcion de seleccion de mascota
 function seleccionarMokepon(){
     let inputHipodogue=document.getElementById('hipodogue')
