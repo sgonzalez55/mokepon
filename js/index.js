@@ -1,7 +1,11 @@
-//funcion de incio de eventos
+
+//declaracion de variables globales
 let ataque
 let atkEnemigo
 let puntaje
+let vida = 3
+let vidaEnemigo = 3
+//funcion de incio de eventos
 function iniciar() {
     //declaracion de las variables
     let btnSelect = document.getElementById('select')
@@ -87,26 +91,54 @@ function seleccionAtaqueAlea(){
 }
 //Fuego > Tierra > Agua > Fuego QUEDAMOS POR AQUI
 function combate() {
+    let spanVidaJugador = document.getElementById('vidas-player')
+    let spanVidasEnemigo = document.getElementById('vidas-cpu')
     if(ataque == atkEnemigo){
         puntaje ='EMPATE 😒'
     }else if (ataque == 'Fuego 🔥🔥🔥' && atkEnemigo == 'Tierra 🌱🌱🌱') {
         puntaje = 'GANASTE 🎉🎉🎉'
+        vidaEnemigo --
+        spanVidasEnemigo.innerHTML = vidaEnemigo
     }else if (ataque =='Agua 💧💧💧' && atkEnemigo == 'Fuego 🔥🔥🔥') {
         puntaje = 'GANASTE 🎉🎉🎉'
+        vidaEnemigo --
+        spanVidasEnemigo.innerHTML = vidaEnemigo
     }else if (ataque == 'Tierra 🌱🌱🌱' && atkEnemigo == 'Agua 💧💧💧') {
         puntaje = 'GANASTE 🎉🎉🎉'
+        vidaEnemigo --
+        spanVidasEnemigo.innerHTML = vidaEnemigo
     }else{
         puntaje = 'PERDISTE 💀💀💀'
+        vida--
+        spanVidaJugador.innerHTML = vida
+        
     }
     msj()
+    vidas()
 }
 
 //funcion que inserta en el section el mensaje
 function msj() {
     let sectionMsj = document.getElementById('mensajes')
+    let txtFinal = document.getElementById('text-final')
     let parrafo = document.createElement('p')
+    let textH2 = document.createElement('h2')
+    
     parrafo.innerHTML = 'Tu mascota ataco con '+ataque + ' y el enemigo te ataco con '+atkEnemigo + puntaje
     sectionMsj.appendChild(parrafo)
+
+    if (vida == 0) {
+        textH2.innerHTML = 'PERDISTE EL JUEGO'
+        txtFinal.appendChild(textH2)
+    }else if (vidaEnemigo == 0) {
+        textH2.innerHTML = 'GANASTE EL JUEGO'
+        txtFinal.appendChild(textH2)
+    }
+}
+
+//funcion para calcular las vidas 
+function vidas(){
+
 }
 
 //funcion para reiniciar pagina
