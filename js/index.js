@@ -55,6 +55,7 @@ function seleccionAleatoria(){
     }else{
         spanEnemy.innerHTML='Ratigueya'
     }
+    
 }
 //fin funcion enemigo
 
@@ -76,27 +77,35 @@ function seleccionPoderT(){
 function seleccionAtaqueAlea(){
     let powerRandom=random(1,3)
     if (powerRandom == 1) {
-       atkEnemigo = 'Fuego 🔥🔥🔥'
+        atkEnemigo = 'Fuego 🔥🔥🔥'
     }else if(powerRandom == 2){
         atkEnemigo = 'Agua 💧💧💧'
     }else{
         atkEnemigo = 'Tierra 🌱🌱🌱'
     }
-    msj()
+    combate()
 }
-//Fuego > Tierra > Agua > Fuego
+//Fuego > Tierra > Agua > Fuego QUEDAMOS POR AQUI
 function combate() {
-    
     if(ataque == atkEnemigo){
         puntaje ='EMPATE 😒'
+    }else if (ataque == 'Fuego 🔥🔥🔥' && atkEnemigo == 'Tierra 🌱🌱🌱') {
+        puntaje = 'GANASTE 🎉🎉🎉'
+    }else if (ataque =='Agua 💧💧💧' && atkEnemigo == 'Fuego 🔥🔥🔥') {
+        puntaje = 'GANASTE 🎉🎉🎉'
+    }else if (ataque == 'Tierra 🌱🌱🌱' && atkEnemigo == 'Agua 💧💧💧') {
+        puntaje = 'GANASTE 🎉🎉🎉'
+    }else{
+        puntaje = 'PERDISTE 💀💀💀'
     }
+    msj()
 }
 
 //funcion que inserta en el section el mensaje
 function msj() {
     let sectionMsj = document.getElementById('mensajes')
     let parrafo = document.createElement('p')
-    parrafo.innerHTML = 'Tu mascota ataco con '+ataque + ' y el enemigo te ataco con '+atkEnemigo + ' y ' + puntaje
+    parrafo.innerHTML = 'Tu mascota ataco con '+ataque + ' y el enemigo te ataco con '+atkEnemigo + puntaje
     sectionMsj.appendChild(parrafo)
 }
 
