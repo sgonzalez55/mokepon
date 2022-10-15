@@ -8,6 +8,9 @@ let vidaEnemigo = 3
 //funcion de incio de eventos
 function iniciar() {
     //declaracion de las variables
+    let seccAtk=document.getElementById('poder')
+    seccAtk.style.display='none'
+
     let btnSelect = document.getElementById('select')
     let btnFuego =document.getElementById('btn-fuego')
     let btnAgua = document.getElementById('btn-agua')
@@ -23,6 +26,11 @@ function iniciar() {
 }
 
 function seleccionarMokepon(){
+    let seccMok=document.getElementById('Mascota')
+    seccMok.style.display='none'
+
+    let seccAtk=document.getElementById('poder')
+    seccAtk.style.display='block'
     let inputHipodogue=document.getElementById('hipodogue')
     let inputCapipepo=document.getElementById('capipepo')
     let inputRatigueya=document.getElementById('ratigueya')
@@ -154,8 +162,6 @@ function msj() {
     }
 
 }
-
-
 
 //funcion para reiniciar pagina
 function pageReload(){
