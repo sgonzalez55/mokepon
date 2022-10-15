@@ -38,7 +38,7 @@ function seleccionarMokepon(){
     }
 
     seleccionAleatoria()//llamando a la funcion de aletorio enemigo
-  
+
 }
 
 //funcion aleatoriedad
@@ -59,7 +59,7 @@ function seleccionAleatoria(){
     }else{
         spanEnemy.innerHTML='Ratigueya'
     }
-    
+
 }
 //fin funcion enemigo
 
@@ -67,7 +67,7 @@ function seleccionAleatoria(){
 function seleccionPoderF(){
     ataque = 'Fuego 🔥🔥🔥'
     seleccionAtaqueAlea()//llamando funcion para que se seleccione el ataque automaticamente
-    
+
 }
 function seleccionPoderA(){
     ataque = 'Agua 💧💧💧'
@@ -111,10 +111,22 @@ function combate() {
         puntaje = 'PERDISTE 💀💀💀'
         vida--
         spanVidaJugador.innerHTML = vida
-        
+
     }
     msj()
-    vidas()
+
+}
+//funcion desactivar botones
+
+function unlock() {
+    let btnFuego =document.getElementById('btn-fuego')
+    let btnAgua = document.getElementById('btn-agua')
+    let btnTierra = document.getElementById('btn-tierra')
+
+    btnFuego.disabled = true
+    btnAgua.disabled = true
+    btnTierra.disabled = true
+    
 }
 
 //funcion que inserta en el section el mensaje
@@ -123,23 +135,27 @@ function msj() {
     let txtFinal = document.getElementById('text-final')
     let parrafo = document.createElement('p')
     let textH2 = document.createElement('h2')
-    
+
     parrafo.innerHTML = 'Tu mascota ataco con '+ataque + ' y el enemigo te ataco con '+atkEnemigo + puntaje
     sectionMsj.appendChild(parrafo)
-
+    //valida si la vida llega a  0 e inserta el texto del resultado.
     if (vida == 0) {
-        textH2.innerHTML = 'PERDISTE EL JUEGO'
+        textH2.innerHTML = 'PERDISTE EL JUEGO 💀💀💀'
         txtFinal.appendChild(textH2)
+        alert('PERDISTE 💀💀💀')
+        unlock()
+
     }else if (vidaEnemigo == 0) {
-        textH2.innerHTML = 'GANASTE EL JUEGO'
+        textH2.innerHTML = 'GANASTE EL JUEGO 🎉🎉🎉'
         txtFinal.appendChild(textH2)
+        alert('GANASTE 🎉🎉🎉')
+        unlock()
+
     }
-}
-
-//funcion para calcular las vidas 
-function vidas(){
 
 }
+
+
 
 //funcion para reiniciar pagina
 function pageReload(){
